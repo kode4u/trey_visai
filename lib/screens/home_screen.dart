@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_compass/flutter_compass.dart';
 import 'package:get/get.dart';
 import 'package:kode4u/configs/k_config.dart';
+import 'package:kode4u/utils/k_utils.dart';
 import 'package:torch_light/torch_light.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -86,23 +87,23 @@ class _HomeScreenState extends State<HomeScreen> {
           double direction = snapshot.data!.heading!;
           var width = MediaQuery.of(context).size.width - 50;
           return GestureDetector(
-            onTap: () {
-              setState(() async {
+            onTap: () async {
+              setState(() {
                 _flashlight_on = !_flashlight_on;
-                if (_flashlight_on) {
-                  try {
-                    await TorchLight.enableTorch();
-                  } on Exception catch (_) {
-                    // Handle error
-                  }
-                } else {
-                  try {
-                    await TorchLight.disableTorch();
-                  } on Exception catch (_) {
-                    // Handle error
-                  }
-                }
               });
+              if (_flashlight_on) {
+                try {
+                  await TorchLight.enableTorch();
+                } on Exception catch (_) {
+                  // Handle error
+                }
+              } else {
+                try {
+                  await TorchLight.disableTorch();
+                } on Exception catch (_) {
+                  // Handle error
+                }
+              }
             },
             child: Container(
               margin: const EdgeInsets.all(0),
@@ -122,7 +123,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   : null,
               child: Transform.rotate(
                 angle: ((direction) * (pi / 180) * -1),
-                child: Image.asset('assets/images/compass.png'),
+                child: Image.asset(KUtil.isKh()
+                    ? 'assets/images/compass.png'
+                    : 'assets/images/compass_en.png'),
               ),
             ),
           );
