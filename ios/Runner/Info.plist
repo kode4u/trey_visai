@@ -16,7 +16,7 @@
 	<string>Trey Visai</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
-	<key>CFBundleShortVersionString</key>
+	<key>2.0.1</key>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
@@ -45,5 +45,7 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+    <key>GADApplicationIdentifier</key>
+    <string>ca-app-pub-6380644639947620~9510049271</string>
 </dict>
 </plist>

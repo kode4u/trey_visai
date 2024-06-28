@@ -11,34 +11,30 @@ import 'package:torch_light/torch_light.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  bool _hasPermissions = false;
-  bool _hasFlashlight = false;
-  bool _flashlight_on = false;
+  bool isFlashlightOn = false;
 
   @override
   void initState() {
     super.initState();
-    initFlashlight();
+    // initFlashlight();
   }
 
-  initFlashlight() async {
-    try {
-      final isTorchAvailable = await TorchLight.isTorchAvailable();
-      setState(() {
-        _hasFlashlight = isTorchAvailable;
-      });
-    } on Exception catch (_) {
-      // Handle error
-    }
-  }
+  // initFlashlight() async {
+  //   try {
+  //     final isTorchAvailable = await TorchLight.isTorchAvailable();
+  //     setState(() {});
+  //   } on Exception catch (_) {
+  //     // Handle error
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -89,9 +85,9 @@ class _HomeScreenState extends State<HomeScreen> {
           return GestureDetector(
             onTap: () async {
               setState(() {
-                _flashlight_on = !_flashlight_on;
+                isFlashlightOn = !isFlashlightOn;
               });
-              if (_flashlight_on) {
+              if (isFlashlightOn) {
                 try {
                   await TorchLight.enableTorch();
                 } on Exception catch (_) {
@@ -111,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
               width: width,
               height: width,
               alignment: Alignment.center,
-              decoration: _flashlight_on
+              decoration: isFlashlightOn
                   ? BoxDecoration(
                       borderRadius:
                           const BorderRadius.all(Radius.circular(360)),
