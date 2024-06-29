@@ -16,8 +16,8 @@
 	<string>Trey Visai</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
-	<key>2.0.1</key>
-	<string>$(FLUTTER_BUILD_NAME)</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.0.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
@@ -47,5 +47,7 @@
 	<true/>
     <key>GADApplicationIdentifier</key>
     <string>ca-app-pub-6380644639947620~9510049271</string>
+    <key>FLTEnableImpeller</key>
+    <false/>
 </dict>
 </plist>
